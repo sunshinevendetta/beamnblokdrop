@@ -1,19 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { WagmiProvider, createConfig, http } from 'wagmi';
+import { lensTestnet } from 'wagmi/chains';
+import { ConnectKitProvider } from 'connectkit';
+import { LensProvider } from '@lens-protocol/react-web';
+import WalletConnector from './WalletConnector';
+import SubmitScore from './SubmitScore';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const config = createConfig({
+  chains: [lensTestnet],
+  transports: {
+    [lensTestnet.id]: http(process.env.REACT_APP_LENS_RPC_URL),
+  },
+  walletConnectProjectId: process.env.REACT_APP_WALLET_CONNECT_PROJECT_ID,
+});
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const renderWithProviders = (component: React.ReactElement, rootElement: HTMLElement) => {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(
+    <WagmiProvider config={config}>
+      <ConnectKitProvider>
+        <LensProvider>
+          {component}
+        </LensProvider>
+      </ConnectKitProvider>
+    </WagmiProvider>
+  );
+};
+
+const walletRoot = document.getElementById('wallet-connector-root');
+if (walletRoot) {
+  renderWithProviders(<WalletConnector />, walletRoot);
+}
+
+const submitScoreRoot = document.getElementById('submit-score-root');
+if (submitScoreRoot) {
+  renderWithProviders(<SubmitScore />, submitScoreRoot);
+}

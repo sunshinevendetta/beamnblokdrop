@@ -26,13 +26,14 @@
         <div id="scoreContainer">
           Score : <span id="finalScore">0</span>
         </div>
-       <div id="buttonContainer">
-  <img id="startGame" src="./assets/Title/retry.svg" />
-  <img id="leaderboard" src="./assets/Title/leaderboard.svg" />
-  <img id="submitScore" src="./assets/Title/submit.svg" />
-  <img id="shareToLens" src="./assets/Title/share.svg" />
-</div>
-
+        <div id="buttonContainer">
+          <img id="startGame" src="./game/assets/Title/retry.svg" />
+          <img id="leaderboard" src="./game/assets/Title/leaderboard.svg" />
+          <img id="submitScore" src="./game/assets/Title/submit.svg" />
+          <img id="shareToLens" src="./game/assets/Title/share.svg" />
+        </div>
+        <!-- Added for score submission -->
+        <div id="submit-score-root"></div>
       </div>
     </div>
 
@@ -40,8 +41,8 @@
     <div class="displayContainer">
       <div class="titleContainer">
         <model-viewer
-          src="assets/models/logo.glb"
-          environment-image="assets/hdr/environment.hdr"
+          src="./game/assets/models/logo.glb"
+          environment-image="./game/assets/models/environment.hdr"
           auto-rotate auto-rotate-delay="0" auto-rotate-speed="15"
           camera-controls exposure="1">
         </model-viewer>
@@ -71,6 +72,8 @@
       ">
       Start Game
     </button>
+    <!-- Added for wallet connection -->
+    <div id="wallet-connector-root"></div>
   </div>
 
   <!-- Hydra initialization -->
@@ -102,7 +105,7 @@
       const startScreen = document.getElementById('startScreen');
       const endGame = document.getElementById('endGameContainer');
 
-      // Hide end‐game overlay initially
+      // Hide end-game overlay initially
       endGame.style.display = 'none';
 
       // When user clicks "Start Game"
@@ -112,10 +115,15 @@
 
         // Dynamically load main.js so game only boots now
         const script = document.createElement('script');
-        script.src = 'main.js';
+        script.src = './game/main.js';
         document.body.appendChild(script);
       });
     });
   </script>
+
+  <!-- React build scripts (update with actual filenames after build) -->
+  <script src="react-build/static/js/runtime-main.js"></script>
+  <script src="react-build/static/js/2.chunk.js"></script>
+  <script src="react-build/static/js/main.chunk.js"></script>
 </body>
 </html>
