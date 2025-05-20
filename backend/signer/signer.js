@@ -5,7 +5,7 @@ const PRIVATE_KEY = 'privatekey';
 const verifyingContract = '0x0eF5B8b44A3F9C60c989266B991bC91350a7ACb9';
 const chainId = 17000;
 
-const player = '0xAe6b19b637FDCB9c5C05238E5279754C39DE76A9';
+const player = '';
 const score = 420;
 const nonce = 0;
 
