@@ -114,4 +114,3 @@ Note: The diagram is hosted in the project’s GitHub repository. Ensure accessi
 License
 MIT License
 Created by Sunshine Vendetta
-This README is tailored for a hackathon, showcasing BEAMN Arcade’s open-source prototype while protecting proprietary elements critical to the full version’s business success. The sequence diagram enhances clarity, and the focus on innovation and Web3 integration makes it a compelling submission. Replace the diagram URL with your actual hosted image path and verify its accessibility. Let me know if you need further assistance with the hackathon submission or additional refinements!
