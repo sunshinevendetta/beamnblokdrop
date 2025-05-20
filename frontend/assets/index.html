@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BLOKDROP©</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Phaser for the game -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.70.0/phaser-arcade-physics.min.js"
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- Hydra for background visuals -->
+  <script src="https://cdn.jsdelivr.net/npm/hydra-synth/dist/hydra-synth.js"></script>
+  <!-- Google Model Viewer for GLB + HDRI -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Hydra background -->
+    <canvas id="hydraCanvas"></canvas>
+
+    <!-- Game board -->
+    <div id="boardContainer">
+      <div id="endGameContainer">
+        <div id="gameMessage">Game Over</div>
+        <div id="scoreContainer">
+          Score : <span id="finalScore">0</span>
+        </div>
+       <div id="buttonContainer">
+  <img id="startGame" src="./assets/Title/retry.svg" />
+  <img id="leaderboard" src="./assets/Title/leaderboard.svg" />
+  <img id="submitScore" src="./assets/Title/submit.svg" />
+  <img id="shareToLens" src="./assets/Title/share.svg" />
+</div>
+
+      </div>
+    </div>
+
+    <!-- UI panel -->
+    <div class="displayContainer">
+      <div class="titleContainer">
+        <model-viewer
+          src="assets/models/logo.glb"
+          environment-image="assets/hdr/environment.hdr"
+          auto-rotate auto-rotate-delay="0" auto-rotate-speed="15"
+          camera-controls exposure="1">
+        </model-viewer>
+      </div>
+      <div class="nextBlok">
+        <span id="nextBlokText">Next Blok:</span>
+        <img id="nextBlokImage" />
+      </div>
+      <div class="score"><span>Score</span><span id="scoreNumber">0</span></div>
+      <div class="score"><span>Lines</span><span id="linesNumber">0</span></div>
+      <div class="score"><span>Level</span><span id="levelNumber">1</span></div>
+    </div>
+  </div>
+
+  <!-- Start screen overlay -->
+  <div id="startScreen" style="
+      position:absolute; top:50%; left:50%;
+      transform:translate(-50%,-50%);
+      display:flex; flex-direction:column;
+      align-items:center; background-color:black;
+      color:#e8e8e8; border:3px solid lightgray;
+      border-radius:1px; padding:20px; z-index:10;
+    ">
+    <button id="startButton" style="
+        font-family:fantasy; font-size:medium;
+        padding:10px 20px; cursor:pointer;
+      ">
+      Start Game
+    </button>
+  </div>
+
+  <!-- Hydra initialization -->
+  <script>
+    const hydra = new Hydra({
+       canvas: document.getElementById('hydraCanvas'),
+  detectAudio: false,
+  audio: { enableStream: false },
+  width: window.innerWidth * window.devicePixelRatio,
+  height: window.innerHeight * window.devicePixelRatio
+    });
+    noise().color(0.1, .006, 0.01)
+      .modulate(noise(0.1,9)).scale(5)
+      .layer(src(o0).mask(osc(1).modulateRotate(osc(7,9),9,0))
+        .scale(10).luma(0.2,0.3))
+      .blend(o0).out(o0);
+    osc().modulate(noise(7)).out(o1);
+    src(o0).modulate(o1)
+      .layer(src(o1).mult(o1).saturate(0))
+      .modulateRotate(o1)
+      .rotate(({time}) => time % 360 * 0.05)
+      .out(o2);
+    render(o2);
+  </script>
+
+  <!-- Control start logic and dynamic game load -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const startScreen = document.getElementById('startScreen');
+      const endGame = document.getElementById('endGameContainer');
+
+      // Hide end‐game overlay initially
+      endGame.style.display = 'none';
+
+      // When user clicks "Start Game"
+      document.getElementById('startButton').addEventListener('click', () => {
+        // Remove start screen
+        startScreen.style.display = 'none';
+
+        // Dynamically load main.js so game only boots now
+        const script = document.createElement('script');
+        script.src = 'main.js';
+        document.body.appendChild(script);
+      });
+    });
+  </script>
+</body>
+</html>
