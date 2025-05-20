@@ -1,157 +1,94 @@
-# ⚡️ BEAMN Arcade – Next Generation On-Chain Arcade ⚡️  
-### 🎮 Play Hard. 🧠 Score High. 💰 Get Paid.
+⚡️ BEAMN Arcade – Next Generation On-Chain Arcade ⚡️
+🎮 Play Hard. 🧠 Score High.
+🚀 Overview
+BEAMN Arcade is a decentralized gaming prototype where skill takes center stage.
+This open-source version features BlokDrop, a Tetris-inspired game that’s simple, addictive, and built for Web3.
+Compete on a blockchain leaderboard, mint soul-bound tokens (SBTs), and share your wins—all in a lean demo package.
 
----
+    👾 Built with Phaser  
+    🔗 Powered by Smart Contracts  
+    💾 Stored on IPFS  
+    📡 Mock social integration
 
-## 🚀 Overview
+🧠 Vision & Value
+BEAMN Arcade is about pure skill and transparent competition.
+No gimmicks—just play, score, and prove your worth.
+A foundation for skill-based gaming on-chain.
+🛠️ Architecture Snapshot
 
-**BEAMN Arcade** is not your childhood game console.  
-It’s a protocol. It’s an arcade. It’s a competition pit where on-chain warriors battle in skill-based arenas to earn *real digital rewards*.  
-This open-source prototype kicks off with **BLOKDROP**, a hyper-focused, high-stakes, Tetris-inspired faller that’s brutally simple—and dangerously addictive.
+    🎮 Game Client: Phaser-driven, runs locally off-chain.  
+    🧾 Front-End: Simple UI for score submission.  
+    🔐 Wallet: Connects you to the blockchain.  
+    💾 Decentralized Storage: IPFS secures score data.  
+    🧱 Smart Contract: Handles scores and SBT minting.  
+    🌐 Social Mock: Simulates sharing your achievements.
 
-👾 Built in **Phaser**  
-🔒 Powered by **EIP-712**  
-🔗 Anchored by **Ethereum Smart Contracts**  
-📡 Shared via **Lens Protocol**  
-💸 Driven by **GHO** submission fees
+🌀 Game Loop
 
----
+    Launch BlokDrop—no wallet required to play.  
+    Stack blocks, clear lines, and chase a high score.  
+    Want to go on-chain? Submit your score (wallet needed).  
+    Your score is:  
+        🧠 Signed  
+        🔒 Verified  
+        🪙 Recorded on-chain  
+        🧬 Minted as an SBT  
+        📢 Shared via a mock social feed
 
-## 🧠 Vision & Value
+💸 Score Submission Flow
+Step
+	
+What Happens
+🎯 Submit
+	
+Wallet authentication kicks in
+🪪 SBT
+	
+Score becomes a permanent token
+🧩 Social
+	
+Mock post broadcasts your win
+🌐 Social Vibes
 
-The arcade is reborn.  
-BEAMN fuses the dopamine of leaderboard domination with decentralized proof.  
-You play. You prove. You win.  
-**It’s skill-to-earn, not play-to-earn.**
+    Score hits the blockchain, front-end mocks a social post.  
+    Imagine leaderboard bragging rights with community flair.  
+    This is just a taste—more to come in future iterations.
 
----
+💎 Technical Highlights
 
-## 🛠️ Architecture Snapshot
+    Phaser: Smooth HTML5 gameplay.  
+    Solidity: Contracts ensure integrity.  
+    IPFS: Immutable score storage.  
+    Web3 Wallet: Ties it all to your identity.  
+    Mock Social: Simulates a Web3 social layer.
 
-- 🎮 **Game Client**: HTML5 + Phaser, runs 100% off-chain.
-- 🧾 **Front-End**: Minimal UI, handles submission & feedback.
-- 🔐 **Wallet Layer**: Signs score with EIP-712 payloads.
-- 💾 **Decentralized Storage**: IPFS used for score metadata.
-- 🧱 **Smart Contract**: Handles leaderboard + mints SBTs.
-- 🌐 **Lens Simulation**: Score becomes your social flex.
+🛡️ Security Basics
 
----
+    ✅ Contracts use standard safeguards.  
+    ✅ Testnet keeps it experimental and safe.  
+    ✅ IPFS locks in data integrity.
 
-## 🌀 Game Loop
+🧱 Future-Proof Vibes
 
-1. You play **BlokDrop** (no wallet required).
-2. You grind. You sweat. You chase the perfect stack.
-3. You finally hit the god-tier score?  
-   Hit **Submit** (connect wallet, pay 0.25 GHO).
-4. Your score gets:
-   - 🧠 Signed
-   - 🔒 Verified
-   - 🪙 Stored on-chain
-   - 🧬 Minted as a non-transferable **SBT**
-   - 📢 Published to your **Lens feed**
+    Modular design—plug in new games easily.  
+    SBTs could evolve into badges or more.  
+    Scalable, but the big vision stays under wraps for now.
 
----
+🧪 Hackathon Hype
+A slick blend of gameplay, blockchain, and social hooks.
+Lean, open-source, and ready to impress.
+This is Web3 gaming, prototype-style.  
+🔁 Sequence Diagram
+📊 See it in the repo (./docs/diagram.puml).
+Covers:  
 
-## 💸 Score Minting Economics
+    🎮 Game flow  
+    🔐 Score signing  
+    📦 Storage + minting  
+    📣 Social mock-up
 
-| Item                    | Detail                             |
-|-------------------------|-------------------------------------|
-| 💰 Submission Fee       | 0.25 GHO per score                  |
-| 🏦 Vault Split          | 50% to bounty pool / 50% to house   |
-| 🎯 Leaderboard Rewards  | Top scores claim bounty daily       |
-| 🪪 Soul-Bound Token     | Minted as permanent score proof     |
-| 🧩 Social Distribution  | Post auto-synced via Lens Protocol  |
-
----
-
-## 🧾 Contract Internals
-
-- 🧷 `submitScore(score, signature)`  
-- 💥 Verifies EIP-712 signature  
-- 🔐 Ensures correct nonce  
-- 🥇 Updates leaderboard (Top 5 logic)  
-- 🪪 Mints SBT to player wallet  
-- 💸 Emits vault split + reward events
-
----
-
-## 🌐 Social Layer (Lens)
-
-- 🧠 Score auto-posted with metadata & SBT SVG  
-- 🔗 Lens Profile gets updated  
-- 📢 Leaderboard flex = social proof  
-- 🎨 Your score is your story
-
----
-
-## 💰 Rewards
-
-- 🥇 Top scorers earn GHO from the daily bounty pool  
-- 📆 Weekly rewards & seasonal leaderboards coming soon  
-- 🔮 Future collabs with artists, brands & protocols = theme drops + jackpots
-
----
-
-## 💎 Technical Highlights
-
-- Phaser v3 HTML5 Game Engine  
-- EIP-712 Signature Auth  
-- Solidity Smart Contract (GHO native)  
-- IPFS + JSON metadata  
-- Lens Protocol V3 compatibility  
-- Hydra-ready visuals for Plasma-era backgrounds
-
----
-
-## 🛡️ Security Design
-
-- ✅ Reentrancy protected (OpenZeppelin)  
-- ✅ Nonce + Signer rotation  
-- ✅ Contract resets daily (optional per gameId)  
-- ✅ No privileged write access post-deploy  
-- ✅ GHO-only fee model, no external tokens = simpler audits
-
----
-
-## 🧱 Scalable & Modular
-
-- Games are plug & play  
-- Contracts can be per-day / per-tournament  
-- Score SBTs extendable to tournament badges  
-- Hydra visuals → NFT-bound themes  
-- Users can own, remix, or compete in future creator arenas
-
----
-
-## 🧪 For Hackathon Judges
-
-> This prototype isn’t just fun—it’s scalable, auditable, and community-owned (if you want it to be).  
-> We integrated gameplay, social, Web3 payments, and soul-bound NFTs in under 10k gas per call.  
-> Try beating that.
-
----
-
-## 🔁 Sequence Diagram
-
-📊 See `./docs/diagram.puml` or README image embed (if submitted via GitHub).  
-Covers:
-- 🎮 Game flow
-- 🔐 Score auth
-- 📦 Storage & minting
-- 📣 Social broadcast
-- 💸 Reward logic
-
----
-
-## 🔓 License
-
-**MIT**  
-Built by **Sunshine Vendetta** & **Optimized Intelligence Industries**  
-Use it. Fork it. Break it. Just don’t ship it without adding something.
-
----
-
-🕹️ *BEAMN is not just a game.*  
-Time to **Play Hard. Score High. Get Paid.**
-
----
+🔓 License
+MIT
+Created by Sunshine Vendetta.
+Fork it, tweak it, make it yours—just keep it fresh.
+🕹️ BEAMN Arcade: Play. Score. Own it.  
